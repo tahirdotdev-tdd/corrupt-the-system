@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SYS://CORRUPT</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Scanline / noise overlay layers -->
+  <div class="noise-layer" id="noise-layer" aria-hidden="true"></div>
+  <div class="scanlines" aria-hidden="true"></div>
+  <div class="vignette" aria-hidden="true"></div>
+
+  <!-- Glitch text artifact overlays -->
+  <div class="glitch-overlay" id="glitch-overlay" aria-hidden="true"></div>
+
+  <!-- ══════════ TITLE SCREEN ══════════ -->
+  <div class="screen" id="screen-title">
+    <div class="title-box">
+      <div class="sys-label">SYS://CORRUPT  v0.9.1</div>
+      <h1 class="title-main" data-text="CORRUPT">CORRUPT</h1>
+      <p class="title-sub">The system is failing. Solve the puzzles before it's too late.</p>
+      <div class="integrity-bar-wrap">
+        <span class="integrity-label">SYSTEM INTEGRITY</span>
+        <div class="integrity-track"><div class="integrity-fill" id="title-integrity"></div></div>
+        <span class="integrity-pct" id="title-pct">100%</span>
+      </div>
+      <button class="btn-main" id="btn-start">INITIALIZE</button>
+      <div class="warning-text">⚠ WARNING: COGNITIVE HAZARD. CONTROLS MAY BECOME UNRELIABLE.</div>
+    </div>
+  </div>
+
+  <!-- ══════════ GAME SCREEN ══════════ -->
+  <div class="screen hidden" id="screen-game">
+
+    <!-- Top bar -->
+    <header class="top-bar">
+      <div class="top-bar-left">
+        <span class="sys-tag">SYS://CORRUPT</span>
+        <span class="level-tag" id="level-tag">LEVEL 1</span>
+      </div>
+      <div class="top-bar-center">
+        <div class="integrity-strip">
+          <span class="int-label">INTEGRITY</span>
+          <div class="int-track"><div class="int-fill" id="int-fill"></div></div>
+          <span class="int-val" id="int-val">100%</span>
+        </div>
+      </div>
+      <div class="top-bar-right">
+        <span class="timer-label">TIME</span>
+        <span class="timer-val" id="timer-val">00:00</span>
+        <span class="score-label">SCORE</span>
+        <span class="score-val" id="score-val">0000</span>
+      </div>
+    </header>
+
+    <!-- Corruption warning banner -->
+    <div class="corruption-banner hidden" id="corruption-banner">
+      ⚠ SYSTEM CORRUPTION DETECTED — CONTROLS COMPROMISED ⚠
+    </div>
+
+    <!-- Main game area -->
+    <main class="game-area" id="game-area">
+
+      <!-- Puzzle panel -->
+      <section class="puzzle-panel" id="puzzle-panel">
+        <div class="puzzle-header">
+          <span class="puzzle-id" id="puzzle-id">PROC_0001</span>
+          <span class="puzzle-type" id="puzzle-type">SEQUENCE</span>
+        </div>
+        <div class="puzzle-body" id="puzzle-body">
+          <!-- Injected by JS -->
+        </div>
+        <div class="puzzle-hint" id="puzzle-hint"></div>
+      </section>
+
+      <!-- Right sidebar: controls + corruption log -->
+      <aside class="sidebar">
+        <div class="controls-panel" id="controls-panel">
+          <div class="panel-title">CONTROLS</div>
+          <div class="ctrl-grid" id="ctrl-grid">
+            <!-- Injected by JS -->
+          </div>
+        </div>
+
+        <div class="log-panel" id="log-panel">
+          <div class="panel-title">SYSTEM LOG</div>
+          <div class="log-body" id="log-body">
+            <div class="log-line log-ok">[OK] System initialized.</div>
+          </div>
+        </div>
+      </aside>
+    </main>
+  </div>
+
+  <!-- ══════════ GAME OVER SCREEN ══════════ -->
+  <div class="screen hidden" id="screen-gameover">
+    <div class="gameover-box">
+      <div class="go-err">FATAL ERROR</div>
+      <h2 class="go-title">SYSTEM FAILURE</h2>
+      <p class="go-sub">Corruption reached critical levels.<br>All data has been lost.</p>
+      <div class="go-stats" id="go-stats"></div>
+      <button class="btn-main" id="btn-restart">REBOOT SYSTEM</button>
+    </div>
+  </div>
+
+  <!-- ══════════ VICTORY SCREEN ══════════ -->
+  <div class="screen hidden" id="screen-victory">
+    <div class="victory-box">
+      <div class="vic-label">SYSTEM RESTORED</div>
+      <h2 class="vic-title">INTEGRITY PRESERVED</h2>
+      <p class="vic-sub">You solved all puzzles before total corruption.</p>
+      <div class="vic-stats" id="vic-stats"></div>
+      <button class="btn-main" id="btn-play-again">PLAY AGAIN</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
